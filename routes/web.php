@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Frontend
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
+})->name('frontend.home');
+Route::get('/shop', [ProductController::class,"index"])->name('shop');
+Route::get('/product/{slug}', [ProductController::class,"show"])->name('product.detail');
+
+// User
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
+    Route::get('/user/dashboard', function () {
+        return view("user.layouts.app");
+    })->name('user.dashboard');
+});
+
+// Admin
+Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',"AuthAdmin"])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view("admin.layouts.app");
+    })->name('admin.dashboard');
 });
