@@ -1,7 +1,11 @@
 @extends('frontend.layouts.base')
 @section('frontend-content')
     <div class="container">
-
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="wrap-breadcrumb">
             <ul>
                 <li class="item-link"><a href="#" class="link">home</a></li>
@@ -73,7 +77,8 @@
                                     Speaker</a></li>
                             <li class="list-item default-hiden"><a class="filter-link " href="#">Shop Smartphone &
                                     Tablets</a></li>
-                            <li class="list-item"><a data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>'
+                            <li class="list-item"><a
+                                    data-label='Show less<i class="fa fa-angle-up" aria-hidden="true"></i>'
                                     class="btn-control control-show-more" href="#">Show more<i
                                         class="fa fa-angle-down" aria-hidden="true"></i></a></li>
                         </ul>
@@ -264,7 +269,8 @@
                                         <a href="#" class="product-name"><span>{{ $product->name }}</span></a>
                                         <div class="wrap-price"><span
                                                 class="product-price">{{ $product->regular_price }}</span></div>
-                                        <a href="#" class="btn add-to-cart">Add To Cart</a>
+                                        <a href="{{ route('add.to.cart', $product->id) }}" class="btn add-to-cart">Add To
+                                            Cart</a>
                                     </div>
                                 </div>
                             </li>

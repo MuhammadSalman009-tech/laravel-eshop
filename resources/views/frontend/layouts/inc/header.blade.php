@@ -56,8 +56,7 @@
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
                                                 <li class="menu-item">
-                                                    <a title="Dashboard"
-                                                        href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                                    <a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
@@ -74,8 +73,7 @@
                                                     class="fa fa-angle-down" aria-hidden="true"></i></a>
                                             <ul class="submenu curency">
                                                 <li class="menu-item">
-                                                    <a title="Dashboard"
-                                                        href="{{ route('user.dashboard') }}">Dashboard</a>
+                                                    <a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
                                                 </li>
                                                 <li class="menu-item">
                                                     <a title="Logout" href="{{ route('logout') }}"
@@ -88,8 +86,7 @@
                                         </li>
                                     @endif
                                 @else
-                                    <li class="menu-item"><a title="Register or Login"
-                                            href="{{ route('login') }}">Login</a>
+                                    <li class="menu-item"><a title="Register or Login" href="{{ route('login') }}">Login</a>
                                     </li>
                                     <li class="menu-item"><a title="Register or Login"
                                             href="{{ route('register') }}">Register</a>
@@ -154,10 +151,10 @@
                                 </a>
                             </div>
                             <div class="wrap-icon-section minicart">
-                                <a href="#" class="link-direction">
+                                <a href="{{ route('cart') }}" class="link-direction">
                                     <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                                     <div class="left-info">
-                                        <span class="index">4 items</span>
+                                        <span class="index">{{ count((array) session('cart')) }} items</span>
                                         <span class="title">CART</span>
                                     </div>
                                 </a>
@@ -203,10 +200,10 @@
                                     <a href="about-us.html" class="link-term mercado-item-title">About Us</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="shop.html" class="link-term mercado-item-title">Shop</a>
+                                    <a href="{{ route('shop') }}" class="link-term mercado-item-title">Shop</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a href="cart.html" class="link-term mercado-item-title">Cart</a>
+                                    <a href="{{ route('cart') }}" class="link-term mercado-item-title">Cart</a>
                                 </li>
                                 <li class="menu-item">
                                     <a href="checkout.html" class="link-term mercado-item-title">Checkout</a>

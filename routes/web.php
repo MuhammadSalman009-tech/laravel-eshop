@@ -20,6 +20,11 @@ Route::get('/', function () {
 })->name('frontend.home');
 Route::get('/shop', [ProductController::class,"index"])->name('shop');
 Route::get('/product/{slug}', [ProductController::class,"show"])->name('product.detail');
+// Cart
+Route::get("/cart",[ProductController::class,"cart"])->name("cart");
+Route::get("/add-to-cart/{id}",[ProductController::class,"addToCart"])->name("add.to.cart");
+Route::patch("/update-cart",[ProductController::class,"updateCart"])->name("update.cart");
+Route::delete('/remove-from-cart', [ProductController::class, 'removeFromCart'])->name('remove.from.cart');
 
 // User
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])->group(function () {
