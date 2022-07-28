@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\View;
+
 
 class ProductController extends Controller
 {
@@ -12,10 +16,46 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $products=Product::paginate(12);
-        return view("frontend.shop",compact("products"));
+        $categories=Category::all();
+        return view("frontend.shop",compact("products","categories"));
+
+    }
+    public function productsByCategory($slug)
+    {
+        $category=Category::where("slug",$slug)->first();
+        $products=Product::where("category_id",$category->id)->paginate(3);
+        $categories=Category::all();
+        return view("frontend.category-poducts",compact("products","categories"));
+
+    }
+    public function sortProducts(Request $request){
+        $productPerPage=12;
+        if($request->has("productsPerPage")){
+            $productPerPage=$request->get("productsPerPage");
+        }
+        if($request->has('orderBy')){
+            if($request->get("orderBy")=="date"){
+                $products=Product::orderBy("created_at","DESC")->paginate($productPerPage);
+            }else if($request->get("orderBy")=="price"){
+                $products=Product::orderBy("regular_price","ASC")->paginate($productPerPage);
+            }else if($request->get("orderBy")=="price-desc"){
+                $products=Product::orderBy("regular_price","DESC")->paginate($productPerPage);
+            }else{
+                $products=Product::paginate($productPerPage);
+            }
+        }else{
+            $products=Product::paginate($productPerPage);
+        }
+        $response = Response()->json([
+            'st' => 'ok',
+            'data'=> '',
+            'msg'=> 'added',
+            'html' => View::make('frontend.loading-products',compact("products"))->render(),
+        ]);
+        return $response;
     }
 
     /**

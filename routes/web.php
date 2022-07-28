@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProductController as AdminProductController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +22,8 @@ Route::get('/', function () {
 })->name('frontend.home');
 Route::get('/shop', [ProductController::class,"index"])->name('shop');
 Route::get('/product/{slug}', [ProductController::class,"show"])->name('product.detail');
+Route::post('/sort-products/ajax', [ProductController::class,"sortProducts"])->name('sort.products');
+Route::get('/category/{slug}', [ProductController::class,"productsByCategory"])->name('products.by.category');
 // Cart
 Route::get("/cart",[ProductController::class,"cart"])->name("cart");
 Route::get("/add-to-cart/{id}",[ProductController::class,"addToCart"])->name("add.to.cart");
@@ -36,6 +40,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])-
 // Admin
 Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',"AuthAdmin"])->group(function () {
     Route::get('/admin/dashboard', function () {
-        return view("admin.layouts.app");
+        return view("admin.index");
     })->name('admin.dashboard');
+
+    Route::resource('/admin/categories',CategoryController::class);
+    Route::resource('/admin/products',AdminProductController::class);
 });
