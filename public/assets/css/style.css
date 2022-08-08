@@ -4166,7 +4166,7 @@ article.single-post blockquote p:last-child::after {
 .wrap-iten-in-cart .products-cart .delete a.btn:hover i {
     color: #ff2832;
 }
-.shopping-cart .summary {
+.summary {
     display: inline-block;
     background-color: #fdfdfd;
     width: 100%;
@@ -4175,13 +4175,13 @@ article.single-post blockquote p:last-child::after {
     display: table;
     margin-top: 20px;
 }
-.shopping-cart .summary .order-summary {
+.summary .order-summary {
     width: 371px;
     padding-right: 75px;
     display: table-cell;
     vertical-align: middle;
 }
-.shopping-cart .summary .checkout-info {
+.summary .checkout-info {
     width: 259px;
     padding-right: 10px;
     display: table-cell;
@@ -4323,10 +4323,10 @@ article.single-post blockquote p:last-child::after {
     float: initial;
 }
 
-.shopping-cart .main-content-area {
+.main-content-area {
     margin-bottom: 27px;
 }
-.shopping-cart .wrap-show-advance-info-box {
+.wrap-show-advance-info-box {
     margin-bottom: 0;
     margin-top: 40px;
 }
@@ -5091,7 +5091,8 @@ table.shop_attributes tbody {
 }
 .summary-item .row-in-form input[type="email"],
 .summary-item .row-in-form input[type="text"],
-.summary-item .row-in-form input[type="tel"] {
+.summary-item .row-in-form input[type="tel"],
+.summary-item .row-in-form input[type="password"] {
     font-size: 13px;
     line-height: 19px;
     display: inline-block;
@@ -6417,7 +6418,7 @@ table.shop_attributes tbody {
     .wrap-articles article {
         display: block;
     }
-    .shopping-cart .summary .order-summary {
+    .summary .order-summary {
         padding-right: 30px;
     }
     .wrap-iten-in-cart .products-cart .quantity .quantity-input .btn::before {
@@ -6751,9 +6752,9 @@ table.shop_attributes tbody {
         border: 1px solid #e6e6e6;
         color: #666666;
     }
-    .shopping-cart .summary .update-clear,
-    .shopping-cart .summary .checkout-info,
-    .shopping-cart .summary .order-summary {
+    .summary .update-clear,
+    .summary .checkout-info,
+    .summary .order-summary {
         display: inline-block !important;
         width: 100% !important;
         margin: 10px 0;
@@ -7124,7 +7125,7 @@ table.shop_attributes tbody {
         + fieldset.input-field.has-half-width {
         margin-left: 0;
     }
-    .shopping-cart .summary {
+    .summary {
         padding: 15px 15px 0 15px;
     }
     .summary .update-clear .btn {
